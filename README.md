@@ -102,20 +102,3 @@ The program is now running and can be cancelled with _Ctrl + C_.
 **1.** Connect the client device to the Raspberry Pi's Wi-Fi network.
 
 **2.** Open the V2X-Pilot app. If the app asks for an IP address enter `192.168.1.1` and hit confirm.
-
-# Create an executable
-
-Use `pyinstaller` to create an executable file for publishing the app:
-
-For Windows:
-```bash
-pyinstaller --onefile --add-data "rsc/etsi_mapem_spatem.asn;rsc" --add-data "graphql_api/schema.graphql;graphql_api" .\v2x_server.py
-```
-For Linux:
-```bash
-pyinstaller --onefile --add-data "rsc/etsi_mapem_spatem.asn:rsc" --add-data "graphql_api/schema.graphql:graphql_api" v2x_server.py
-```
-
-This creates a file in the `dist` folder. Make sure to provide the asn.1 file in `dist/rsc` and the GraphQL schema in `dist/graphql_api` before starting the app.
-
-The executeable is generated for the platform and OS it was created on. Therefore the Raspberry Pi release needs to be build on a Linux OS and ARM platform.
